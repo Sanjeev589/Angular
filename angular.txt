@@ -1,0 +1,74 @@
+-------------------------------
+Updating Data in JSON file using button 
+---------------------------
+<a [routerLink]="['update',customer.id]" class="btn btn-primary">
+use above anchor tag which will pass id to the json file 
+[routerLink] = attribute    
+update = path name
+customer = object of type Customer class defined in html class
+
+ 
+
+---------------------------------------------
+Displaying Data in next page using button
+---------------------------------------------
+inside method where form is being called say update()
+** define update() method in corresponding .ts file as follows
+----
+update(){
+    console.log(this.customerData.name);
+    this.customerService.updateCustomer(this.customerData).subscribe((data)=>{this.router.navigate(['listcustomer']);})
+  }
+----
+this.customerService is a object of CustomerService component defined in constructor of update component's ts file
+with private access modifier which will call service class 
+----
+by using subscribe we will get stream of data which will then call router object which is defined in constructor of update
+customer's ts file with private access modifier
+----
+router object will call navigate method with parameter as path name where page needs to be switched
+----
+listcustomer = path where page needs to be switched
+----
+import Customer model class,CustomerService class from local files directory
+ and Router from '@angular/router'
+---------------
+i.e.
+---------------
+import { Customer } from 'src/app/model/customer';
+import { CustomerService } from 'src/app/service/customer.service';
+import { Router, ActivatedRoute } from '@angular/router';
+
+ 
+
+----------------------------------------------------------------
+Initializing data in page when page is loaded
+----------------------------------------------------------------
+for this a value must be passed 
+----
+here that value is customer id and generally pass id which is unique for every value in json file hence it will be easy for fetching all values 
+----
+ngOnInit() {
+    this.route.params.subscribe((params)=>{this.customerService.getCustomer(params['id']).subscribe((result)=>{this.customerData=result;})})
+  }
+
+ 
+
+route.params.subscribe will fetch stream of data of specific data of passed id
+
+ 
+
+ 
+
+
+-----------------------------------------------
+Inside service Class+
+-----------------------------------------------
+make string object url which stores stores json server url 
+i.e.  url:string="http://localhost:3000/customers";
+customers = array of customer objects
+---
+create a object of HttpClient inside constructor as with private access modifier for this import HttpClient 
+*** import this file from '@angular/common/http' 
+i.e. import { HttpClient } from '@angular/common/http';//Always take this one not selenium one 
+----
