@@ -1,0 +1,14 @@
+<p>search works!</p>
+<input type="text" id="search" name="search" [(ngModel)]="searchItem" #searchdata="ngModel" required>
+&nbsp;&nbsp;&nbsp;&nbsp;
+<button (click)="search(searchdata.value)">Search</button>
+<div class="container">
+    <table class="table table-responsive">
+        <tr *ngFor="let customer of searchedData">
+            <td>{{customer.id}}</td>
+            <td>{{customer.name}}</td>
+            <td>{{customer.email}}</td>
+            <td>{{customer.phone}}</td>
+        </tr>
+    </table>
+</div>

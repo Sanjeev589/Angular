@@ -1,0 +1,36 @@
+<div class="container">
+        <!--Template Form i.e HTML Form & All event handling will be in the () brackets-->
+        <form #custForm="ngForm" (ngSubmit)="update()">
+            <div class="form-group has-error has-feedback" [class.has-error]="custId.invalid && custId.touched">
+                <label name="id" class="control-label">CustomerId</label>
+                <input type="number" id="id" name="id" class="form-control" [(ngModel)]="customerData.id" #custId="ngModel" required readonly>
+                <span *ngIf="custId.invalid && custId.touched">CustomerId is required</span>
+            </div>
+    
+            <div class="form-group has-error has-feedback" [class.has-error]="custName.invalid && custName.touched">
+                <label name="name" class="control-label">Customer Name</label>
+                <input type="text" name="name" id="name" class="form-control" [(ngModel)]="customerData.name" #custName="ngModel" required pattern="[a-zA-Z]{5,}">
+                <span *ngIf="custName.errors?.required && custName.touched" class="help-block">Name must be entered</span>
+                <span *ngIf="custName.errors?.pattern && custName.touched" class="help-block">Minimum 5 characters required</span>
+            </div>
+    
+            <div class="form-group has-error has-feedback" [class.has-error]="custEmail.invalid && custEmail.touched">
+                <label name="email" class="control-label">Customer Email</label>
+                <input type="email" id="email" name="email" class="form-control" [(ngModel)]="customerData.email" #custEmail="ngModel" required email>
+                <span *ngIf="custEmail.errors?.required && custEmail.touched">Customer Email is required</span>
+                <span *ngIf="custEmail.errors?.email && custEmail.touched" class="help-block">Email invalid</span>
+            </div>
+    
+            <div class="form-group has-error has-feedback" [class.has-error]="custId.invalid && custId.touched">
+                <label name="phone" class="control-label">Phone</label>
+                <input type="number" name="phone" id="phone" class="form-control" [(ngModel)]="customerData.phone" #custPhone="ngModel" required pattern="^[7-9]{1}[0-9]{9}$">
+                <span *ngIf="custPhone.errors?.required && custPhone.touched">Customerphone  is required</span>
+                <span *ngIf="custPhone.errors?.pattern && custPhone.touched" class="help-block">Phone Number invalid</span>
+               
+                <button class="btn btn-primary" type="submit" [disabled]="custForm.invalid">Update</button>
+                {{custForm.value| json}}<br>
+            </div>
+
+        </form>
+    </div>
+

@@ -1,0 +1,43 @@
+<h1>Heading Normal</h1>
+<h1 appChangetext>Heading Normal</h1>
+
+<p [ngStyle]="{color:red}">{{name | uppercase}}</p>
+{{name |lowercase}}
+{{salary |currency:'USD'}}<br>
+{{salary |currency:'USD':false}}<br>
+{{salary|currency:'INR'}}<br>
+{{salary|percent}}<br>
+{{dob}}<br>
+{{dob | date}}<br>
+{{dob | date:'fullDate'}}<br>
+{{dob | date:'shortDate'}}<br>
+{{dob | date: 'dd/MM/yyyy'}}<br>
+2x30=>{{2|multiplier:30}}
+<div class="container">
+    <table class="table table-responsive">
+        <tr *ngFor="let customer of customers">
+            <td>{{customer.id}}</td>
+            <td>{{customer.name}}</td>
+            <td>{{customer.email}}</td>
+            <td>{{customer.phone}}</td>
+            <td><button (click)="deleteCustomer(customer)" class="btn btn-danger">Delete</button></td>
+            
+            <td><a [routerLink]="['update',customer.id]" class="btn btn-primary">Update</a></td>
+        </tr>
+        
+    </table>
+    <button (click)="filterByName(customers)" class="btn btn-danger">SortBYName</button>
+    <button (click)="filterById(customers)" class="btn btn-danger">SortBYId</button>
+    <button (click)="filterByEmail()" class="btn btn-danger">SortBYEmail</button>
+    <table class="table table-responsive">
+        <tr *ngFor="let customer of customerArray">
+            <td>{{customer.id}}</td>
+            <td>{{customer.name}}</td>
+            <td>{{customer.email}}</td>
+            <td>{{customer.phone}}</td>
+        </tr>
+        
+    </table>
+    <!--Sorting experiment ends-->
+    
+</div>

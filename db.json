@@ -1,0 +1,28 @@
+{
+  "customers": [
+    {
+      "id": 43,
+      "name": "priya",
+      "email": "priya@gmail.com",
+      "phone": 9765665432
+    },
+    {
+      "id": 345,
+      "name": "priyavcghcnbmnm",
+      "email": "priya@gmail.com",
+      "phone": 9765665432
+    },
+    {
+      "id": 21,
+      "name": "wqredqw",
+      "email": "wqweq@sad",
+      "phone": "2332323232"
+    },
+    {
+      "id": 2222,
+      "name": "sfcxfcvas",
+      "email": "dsfds@sadcas",
+      "phone": 2121212121
+    }
+  ]
+}

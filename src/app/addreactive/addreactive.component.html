@@ -1,0 +1,39 @@
+<p>addreactive works!</p>
+<div class="container">
+    <form [formGroup]="custForm" (ngSubmit)="addreactive()">
+        <div>
+            ID: <input type="number" class="form-control" formControlName="id" required pattern="[0-9]{2,}">
+            <span *ngIf="custForm.controls.id.touched && custForm.controls.id.errors">
+                <span *ngIf="custForm.controls.id.errors.required">Id is required</span>
+                <span *ngIf="custForm.controls.id.errors.pattern">Id Not Valid</span>
+            </span>
+        </div>
+
+        <div>
+            NAME: <input type="type" class="form-control" formControlName="name" required pattern="[a-zA-Z]{4,}">
+            <span *ngIf="custForm.controls.name.touched && custForm.controls.name.errors">
+                <span *ngIf="custForm.controls.name.errors.required">Name is required</span>
+                <span *ngIf="custForm.controls.name.errors.pattern">Name Not Valid</span>
+            </span>
+        </div>
+
+        <div>
+            EMAIL: <input type="email" class="form-control" formControlName="email" required email>
+            <span *ngIf="custForm.controls.email.touched && custForm.controls.email.errors">
+                <span *ngIf="custForm.controls.email.errors.required">Email is required</span>
+                <span *ngIf="custForm.controls.email.errors.pattern">Email Not Valid</span>
+            </span>
+        </div>
+
+        <div>
+            PHONE: <input type="phone" class="form-control" formControlName="phone" required pattern="[0-9]{10}">
+            <span *ngIf="custForm.controls.phone.touched && custForm.controls.phone.errors">
+                <span *ngIf="custForm.controls.phone.errors.required">Mobile is required</span>
+                <span *ngIf="custForm.controls.phone.errors.pattern">Mobile Not Valid</span>
+            </span>
+        </div>
+        <button type="submit" [disabled]=custForm.invalid>ADD</button>
+        {{custForm.value | json}}
+        <h1>Form Status:{{status}}</h1>
+    </form>
+</div>
