@@ -1,0 +1,36 @@
+<div class="container">
+        <!--Template Form i.e HTML Form & All event handling will be in the () brackets-->
+        
+        <form #empForm="ngForm" (ngSubmit)="add()">
+            <div class="form-group has-error has-feedback" [class.has-error]="empID.invalid && empID.touched">
+                <label name="id" class="control-label">EmployeeId</label>
+                <input type="number" id="id" name="id" class="form-control" [(ngModel)]="employeeData.id" #empID="ngModel" required>
+                <span *ngIf="empID.invalid && empID.touched">EmployeeId is required</span>
+            </div>
+    
+            <div class="form-group has-error has-feedback" [class.has-error]="empName.invalid && empName.touched">
+                <label name="name" class="control-label">EMPLOYEE  Name</label>
+                <input type="text" name="name" id="name" class="form-control" [(ngModel)]="employeeData.name" #empName="ngModel" required pattern="[a-zA-Z]{5,}">
+                <span *ngIf="empName.errors?.required && empName.touched" class="help-block">Name must be entered</span>
+                <span *ngIf="empName.errors?.pattern && empName.touched" class="help-block">Minimum 5 characters required</span>
+            </div>
+    
+            <div class="form-group has-error has-feedback" [class.has-error]="empSalary.invalid && empSalary.touched">
+                <label name="salary" class="control-label">EMPLOYEE  salary</label>
+                <input type="number" id="salary" name="salary" class="form-control" [(ngModel)]="employeeData.salary" #empSalary="ngModel" required salary>
+                <span *ngIf="empSalary.errors?.required && empSalary.touched">EMPLOYEE  salary is required</span>
+                <span *ngIf="empSalary.errors?.salary && empSalary.touched" class="help-block">salary invalid</span>
+            </div>
+    
+            <div class="form-group has-error has-feedback" [class.has-error]="empDesignation.invalid && empDesignation.touched">
+                <label name="designation" class="control-label">Designation</label>
+                <input type="text" name="designation" id="designation" class="form-control" [(ngModel)]="employeeData.designation" #empDesignation="ngModel" required >
+                <span *ngIf="empDesignation.errors?.required && empDesignation.touched">EMPLOYEE phone  is required</span>
+                
+               
+                <button class="btn btn-primary" type="submit" [disabled]="empForm.invalid">Add</button>
+                {{empForm.value| json}}<br>
+            </div>
+
+        </form>
+    </div>
